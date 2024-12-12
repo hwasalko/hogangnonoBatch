@@ -1,0 +1,19 @@
+services:
+
+  mysql:
+    container_name: mysql_house
+    image: mysql/mysql-server:8.0
+    environment: # -e 옵션
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_USER=house
+      - MYSQL_DATABASE=house
+      - MYSQL_PASSWORD=house # MYSQL 패스워드 설정 옵션
+      - TZ=Asia/Seoul
+    ports:
+      - "3306:3306"
+    command:
+      - "mysqld"
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+    volumes:
+      - c:/dev/docker/volume/mysql_house:/var/lib/mysql # -v 옵션 (다렉토리 마운트 설정)
